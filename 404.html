@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | STACKLY</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+
+  <!-- Ambient Decorative Glows -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- --- 404 ERROR SECTION --- -->
+  <section class="error-page" id="error-page">
+    <div class="error-container glass-panel reveal reveal-zoom active" id="error-card">
+      <div class="error-code" id="error-status-code">404</div>
+      <h1 class="error-title" id="error-heading">Page Not Found</h1>
+      <p class="error-desc" id="error-message">
+        The systems capability or page you are requesting is currently undergoing updates or has been moved. Use the options below to resume navigation.
+      </p>
+      <div class="error-actions" id="error-buttons-container">
+        <!-- Back Option -->
+        <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary" id="err-back-btn">
+          <i>←</i> Back
+        </a>
+        <!-- Back to Home Option -->
+        <a href="index.html" class="btn btn-primary" id="err-home-btn">
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </section>
+  </div>
+
+</body>
+</html>
