@@ -94,6 +94,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
+  // --- SECTION HEADER TYPING ANIMATION ---
+  const sectionHeaders = document.querySelectorAll('.section-header h2');
+  sectionHeaders.forEach(header => {
+    const text = header.textContent.trim();
+    header.textContent = ''; // Clear text content
+    
+    const textSpan = document.createElement('span');
+    textSpan.className = 'typed-title';
+    const cursorSpan = document.createElement('span');
+    cursorSpan.className = 'cursor';
+    cursorSpan.textContent = '|';
+    cursorSpan.style.color = 'var(--primary-light)';
+    cursorSpan.style.marginLeft = '5px';
+    cursorSpan.style.animation = 'blink 0.8s infinite';
+    
+    header.appendChild(textSpan);
+    header.appendChild(cursorSpan);
+    
+    let charIndex = 0;
+    let hasTyped = false;
+    
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !hasTyped) {
+        hasTyped = true;
+        
+        function typeChar() {
+          if (charIndex < text.length) {
+            textSpan.textContent += text.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 60);
+          } else {
+            cursorSpan.style.display = 'none';
+          }
+        }
+        
+        setTimeout(typeChar, 200);
+        observer.unobserve(header);
+      }
+    }, { threshold: 0.25 });
+    
+    observer.observe(header);
+  });
+
   // --- STATS COUNT-UP ANIMATION ---
   const statsSection = document.querySelector('.stats');
   const statNums = document.querySelectorAll('.stat-num');
